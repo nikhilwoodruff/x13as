@@ -1,0 +1,4 @@
+src/x13as/_bin/
+dist/
+.venv/
+__pycache__/
