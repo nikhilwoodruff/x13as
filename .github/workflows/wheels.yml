@@ -38,7 +38,8 @@ jobs:
         shell: bash -el {0}
         run: ./scripts/build_binary.sh
       - run: uv build --wheel
-      - run: uv run --isolated --with dist/*.whl --with pytest --with statsmodels pytest -q tests
+      # Test only the wheel's declared dependencies, without project/dev dependencies.
+      - run: uv run --isolated --no-project --with dist/*.whl --with pytest python -m pytest -q tests
       - uses: actions/upload-artifact@v4
         with:
           name: wheel-macos-arm64
