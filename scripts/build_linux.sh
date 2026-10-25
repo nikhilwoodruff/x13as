@@ -16,7 +16,7 @@ for arch in "${ARCHES[@]}"; do
       cp -r /src /build && cd /build && rm -rf src/x13as/_bin dist
       ./scripts/build_binary.sh
       uv build --wheel --out-dir /out
-      uv run --isolated --with "$(ls /out/x13as-*manylinux*$(uname -m).whl)" --with pytest --with statsmodels \
-        pytest -q tests
+      uv run --isolated --no-project --with "$(ls /out/x13as-*manylinux*$(uname -m).whl)" --with pytest \
+        python -m pytest -q tests
     '
 done

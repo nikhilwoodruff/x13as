@@ -1,19 +1,20 @@
 [project]
 name = "x13as"
-version = "1.1.62"
+version = "1.1.62.post1"
 description = "The Census X-13ARIMA-SEATS seasonal adjustment binary, bundled for Python (incl. macOS arm64)"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = ["statsmodels>=0.14", "pandas>=2"]
 
 [project.optional-dependencies]
-statsmodels = ["statsmodels>=0.14", "pandas>=2"]
+# Retain the old extra so existing installation commands keep working.
+statsmodels = []
 
 [project.scripts]
 x13as = "x13as:_cli"
 
 [dependency-groups]
-dev = ["pytest>=8", "statsmodels>=0.14", "pandas>=2"]
+dev = ["pytest>=8"]
 
 [build-system]
 requires = ["hatchling"]
